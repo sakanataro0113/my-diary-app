@@ -1,0 +1,6 @@
+name = "my-diary-app"
+compatibility_date = "2025-05-07"
+
+[build]
+upload.format = "modules"
+functions = "functions"
