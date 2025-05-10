@@ -1,8 +1,9 @@
 name = "my-diary-app"
 compatibility_date = "2025-05-07"
 
+# ここを追加
 pages_build_output_dir = "dist"
 
-[build]
-upload.format = "modules"
-functions = "functions"
+[[build]]
+  command = "npm run build"
+  cwd = "./"  # プロジェクトのルートディレクトリ
