@@ -1,11 +1,14 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
+import { D1Database } from '@cloudflare/workers-types';
+
 
 export type Env = {
   Bindings: {
     DB: D1Database;
   };
 };
+
 
 const app = new Hono<Env>();
 
