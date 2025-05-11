@@ -1,14 +1,7 @@
 name = "my-diary-app"
 compatibility_date = "2025-05-10"
 
-# Pagesのビルド出力ディレクトリ
-pages_build_output_dir = "dist"
-
-[[build]]
+[build]
 command = "npm run build"
-public_dir = "dist"
-
-# Functions設定
-[[functions]]
-name = "post"
-path = "functions/api/post.ts"
+pages_build_output_dir = "dist"
+functions = "./functions"
