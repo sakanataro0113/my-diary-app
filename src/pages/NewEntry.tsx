@@ -1,20 +1,45 @@
-function NewEntry() {
+// src/pages/NewEntry.tsx
+import { useState } from 'react';
+
+export default function NewEntry() {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log({ title, content });
+    // あとでバックエンドに送る処理をここに追加します
+    setTitle('');
+    setContent('');
+  };
+
   return (
-    <div>
-      <h1>新しい日記を書く</h1>
-      <form>
+    <div style={{ padding: '1rem' }}>
+      <h2>新しい日記</h2>
+      <form onSubmit={handleSubmit}>
         <div>
-          <label>タイトル:</label>
-          <input type="text" />
+          <label>
+            タイトル:
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </label>
         </div>
         <div>
-          <label>内容:</label>
-          <textarea rows={10}></textarea>
+          <label>
+            内容:
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+            />
+          </label>
         </div>
         <button type="submit">投稿</button>
       </form>
     </div>
   );
 }
-
-export default NewEntry;
