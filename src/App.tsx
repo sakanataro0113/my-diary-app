@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+
+type Entry = {
+  id: number;
+  content: string;
+  createdAt: string;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [content, setContent] = useState('');
+  const [entries, setEntries] = useState<Entry[]>([]);
+
+  const handleSubmit = () => {
+    if (!content.trim()) return;
+
+    const newEntry: Entry = {
+      id: Date.now(),
+      content,
+      createdAt: new Date().toLocaleString(),
+    };
+
+    // 一旦ローカルで追加（あとでAPIに置き換える）
+    setEntries([newEntry, ...entries]);
+    setContent('');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ maxWidth: 600, margin: '2rem auto', padding: '1rem' }}>
+      <h1>日記投稿アプリ</h1>
+      <textarea
+        rows={5}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="今日の出来事を書いてください..."
+        style={{ width: '100%', marginBottom: '1rem' }}
+      />
+      <button onClick={handleSubmit}>投稿する</button>
+
+      <hr style={{ margin: '2rem 0' }} />
+
+      <h2>投稿一覧</h2>
+      {entries.length === 0 ? (
+        <p>まだ投稿はありません。</p>
+      ) : (
+        entries.map((entry) => (
+          <div key={entry.id} style={{ marginBottom: '1rem' }}>
+            <div>{entry.content}</div>
+            <small>{entry.createdAt}</small>
+          </div>
+        ))
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
