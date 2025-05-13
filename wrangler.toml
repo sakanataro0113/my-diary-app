@@ -3,7 +3,8 @@ compatibility_date = "2025-05-10"
 
 [build]
 command = "npm run build"
-upload = { format = "directory", dir = "dist" }
+upload.format = "directory"
+upload.dir = "./dist"
 functions = "functions"
 
 pages_build_output_dir = "dist"
