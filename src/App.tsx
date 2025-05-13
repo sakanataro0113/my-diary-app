@@ -4,10 +4,18 @@ import NewEntry from './pages/NewEntry';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/new" element={<NewEntry />} />
-    </Routes>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100vh',
+      padding: '1rem',
+    }}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new" element={<NewEntry />} />
+      </Routes>
+    </div>
   );
 }
 
