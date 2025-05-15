@@ -6,12 +6,7 @@ type Props = {
 
 export default function Home({ entries }: Props) {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '2rem'
-    }}>
+    <div>
       <h2>日記一覧</h2>
 
       <Link to="/new">
@@ -22,7 +17,7 @@ export default function Home({ entries }: Props) {
         <p>まだ日記がありません。</p>
       ) : (
         entries.map((entry, index) => (
-          <div key={index} style={{ maxWidth: '600px', textAlign: 'left', marginBottom: '1rem' }}>
+          <div key={index}>
             <h3>{entry.title}</h3>
             <p>{entry.content}</p>
             <hr />
