@@ -33,6 +33,7 @@ export default function NewEntry({ setEntries }: Props) {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
+          style={{ width: '100%', height: '200px' }}
         />
         <br />
         <button type="submit">投稿</button>
