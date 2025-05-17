@@ -1,4 +1,9 @@
 name = "my-diary-app"
 compatibility_date = "2025-05-10"
 
+[build]
+command = "npm run build"
+upload.format = "directory"
+functions = "functions"
+
 pages_build_output_dir = "dist"
